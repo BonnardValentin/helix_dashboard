@@ -8,29 +8,375 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Dashboard | Helix Dashboard</title>
+    <title>Helix Agent | DNA Evolution Dashboard</title>
+    <style>
+      /* Animated background */
+      @keyframes pulse-glow {
+        0%, 100% { opacity: 0.4; }
+        50% { opacity: 0.7; }
+      }
+      
+      .glow-effect {
+        animation: pulse-glow 8s ease-in-out infinite;
+      }
+      
+      /* Neural network background pattern */
+      .neural-bg {
+        background-image: 
+          radial-gradient(circle at 25% 25%, rgba(6, 182, 212, 0.05) 1px, transparent 1px),
+          radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      
+      /* Chart animation */
+      @keyframes chart-grow {
+        from { transform: scaleY(0); }
+        to { transform: scaleY(1); }
+      }
+      
+      .chart-bar {
+        transform-origin: bottom;
+        animation: chart-grow 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+    </style>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-slate-950 text-cyan-100 neural-bg">
     <div class="min-h-screen flex flex-col">
-      <!-- Header -->
-      <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <h1 class="text-xl font-bold">Helix Dashboard</h1>
-          <a href="/" class="text-sm font-medium">Logout</a>
+      <!-- Decorative elements -->
+      <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-0 left-0 w-1/3 h-1/3 bg-cyan-600/10 rounded-full blur-3xl glow-effect"></div>
+        <div class="absolute bottom-0 right-0 w-1/3 h-1/3 bg-blue-600/10 rounded-full blur-3xl glow-effect" style="animation-delay: -4s;"></div>
+        <div class="absolute top-1/4 right-1/4 w-1/4 h-1/4 bg-indigo-600/10 rounded-full blur-3xl glow-effect" style="animation-delay: -2s;"></div>
+      </div>
+      
+      <!-- Top Navigation - Glass effect -->
+      <header class="border-b border-cyan-800/20 backdrop-blur-md bg-slate-900/60 sticky top-0 z-20">
+        <div class="w-full max-w-screen-2xl mx-auto flex h-16 items-center px-4 sm:px-6 relative">
+          <div class="flex items-center space-x-4">
+            <h2 class="text-2xl font-bold bg-gradient-to-r from-cyan-300 to-blue-500 text-transparent bg-clip-text">Helix Agent</h2>
+          </div>
+          <div class="flex-1 mx-4 md:mx-6">
+            <div class="relative">
+              <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-cyan-400/60"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              </div>
+              <input type="search" class="block w-full px-3 py-2 pl-10 bg-slate-800/50 border border-cyan-700/30 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400/50 text-sm text-cyan-100 placeholder-cyan-400/50 transition-all duration-300" placeholder="Search agents...">
+            </div>
+          </div>
+          <nav class="flex items-center space-x-6">
+            <a href="/dashboard" class="text-sm font-medium text-cyan-300 hover:text-cyan-200 transition-colors relative group">
+              Dashboard
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="/evolution" class="text-sm font-medium text-cyan-500/70 hover:text-cyan-300 transition-colors relative group">
+              Evolution
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="/population" class="text-sm font-medium text-cyan-500/70 hover:text-cyan-300 transition-colors relative group">
+              Population
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="/settings" class="text-sm font-medium text-cyan-500/70 hover:text-cyan-300 transition-colors relative group">
+              Settings
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <div class="flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 p-0.5">
+              <div class="rounded-full h-full w-full overflow-hidden">
+                <img src="/images/blue-model.webp" alt="User" class="h-full w-full object-cover" />
+              </div>
+            </div>
+          </nav>
         </div>
       </header>
       
       <!-- Main Content -->
-      <main class="flex-1 p-6">
-        <div class="max-w-7xl mx-auto">
-          <div class="bg-white shadow rounded-lg p-6">
-            <h2 class="text-lg font-medium mb-4">Welcome to your Dashboard</h2>
-            <p class="text-gray-500">
-              This is a placeholder dashboard page. After successful login, users would be redirected here.
-            </p>
+      <main class="flex-1 py-8 z-10 relative overflow-hidden">
+        <div class="w-full max-w-screen-2xl mx-auto grid gap-6 px-4 sm:px-6 md:grid-cols-2 lg:grid-cols-3">
+          <!-- Overview + Welcome -->
+          <div class="col-span-full">
+            <div class="rounded-xl border border-cyan-900/30 bg-slate-900/60 backdrop-blur-md shadow-xl p-6 transition-all hover:shadow-cyan-900/5">
+              <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <h3 class="text-xl font-semibold text-cyan-200">Agent Evolution Platform</h3>
+                  <p class="text-cyan-300/60 mt-2">Monitor and manage your evolving agent population with Digital DNA architecture.</p>
+                </div>
+                <div class="flex items-center gap-2 self-start">
+                  <button class="group flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 hover:bg-cyan-500/20 text-cyan-300 transition-all duration-300">
+                    <svg class="mr-1 h-4 w-4 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" x2="16" y1="2" y2="6"></line><line x1="8" x2="8" y1="2" y2="6"></line><line x1="3" x2="21" y1="10" y2="10"></line></svg>
+                    Last 30 days
+                    <svg class="ml-1 h-4 w-4 text-cyan-400 transition-transform duration-300 group-hover:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Stats Cards -->
+          <div class="rounded-xl border border-cyan-900/30 bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-md shadow-xl p-6 hover:shadow-cyan-900/5 transition-all duration-300">
+            <div class="flex flex-col space-y-3">
+              <h3 class="text-sm font-medium uppercase tracking-wider text-cyan-500/80">Agent Population</h3>
+              <p class="text-4xl font-bold text-cyan-300">127</p>
+              <div class="flex items-center">
+                <div class="flex h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width:85%"></div>
+                </div>
+              </div>
+              <p class="text-sm text-cyan-300/70 flex items-center">
+                <svg class="w-4 h-4 mr-1 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg>
+                +12% from last generation
+              </p>
+            </div>
+          </div>
+          
+          <div class="rounded-xl border border-cyan-900/30 bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-md shadow-xl p-6 hover:shadow-cyan-900/5 transition-all duration-300">
+            <div class="flex flex-col space-y-3">
+              <h3 class="text-sm font-medium uppercase tracking-wider text-cyan-500/80">Generations</h3>
+              <p class="text-4xl font-bold text-cyan-300">5</p>
+              <div class="flex h-2 gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <div class={`h-full rounded-full flex-1 ${i === 4 ? 'bg-cyan-400' : 'bg-slate-700'}`}></div>
+                ))}
+              </div>
+              <p class="text-sm text-cyan-300/70 flex items-center">
+                <svg class="w-4 h-4 mr-1 text-cyan-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="16"></line><line x1="8" x2="16" y1="12" y2="12"></line></svg>
+                Current evolution cycle
+              </p>
+            </div>
+          </div>
+          
+          <div class="rounded-xl border border-cyan-900/30 bg-gradient-to-br from-slate-900/80 to-slate-900/40 backdrop-blur-md shadow-xl p-6 hover:shadow-cyan-900/5 transition-all duration-300">
+            <div class="flex flex-col space-y-3">
+              <h3 class="text-sm font-medium uppercase tracking-wider text-cyan-500/80">Fitness Score</h3>
+              <p class="text-4xl font-bold text-cyan-300">0.83</p>
+              <div class="relative h-2 bg-slate-800 rounded-full overflow-hidden">
+                <div class="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width:83%"></div>
+              </div>
+              <p class="text-sm text-cyan-300/70 flex items-center">
+                <svg class="w-4 h-4 mr-1 text-emerald-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"></path></svg>
+                +0.12 from last generation
+              </p>
+            </div>
+          </div>
+          
+          <!-- Evolution Progress Chart -->
+          <div class="col-span-full">
+            <div class="rounded-xl border border-cyan-900/30 bg-slate-900/60 backdrop-blur-md shadow-xl p-6 hover:shadow-cyan-900/5 transition-all duration-300">
+              <div class="flex items-center justify-between mb-6">
+                <div>
+                  <h3 class="text-lg font-medium text-cyan-200">Evolution Progress</h3>
+                  <p class="text-xs text-cyan-400/60">Generational fitness improvement over time</p>
+                </div>
+                <div class="flex items-center space-x-4">
+                  <div class="flex items-center space-x-1">
+                    <div class="w-3 h-3 rounded-full bg-cyan-400"></div>
+                    <span class="text-xs text-cyan-300/70">Best Fitness</span>
+                  </div>
+                  <div class="flex items-center space-x-1">
+                    <div class="w-3 h-3 rounded-full bg-cyan-400/30"></div>
+                    <span class="text-xs text-cyan-300/70">Average Fitness</span>
+                  </div>
+                </div>
+              </div>
+              <div class="h-[240px] w-full">
+                <!-- Chart with glowing effect -->
+                <div class="relative h-full w-full bg-gradient-to-b from-slate-800/40 to-transparent rounded-lg p-4">
+                  <!-- Grid lines -->
+                  <div class="absolute inset-0 grid grid-rows-4 gap-0">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <div class="border-t border-cyan-900/30 relative">
+                        <span class="absolute -top-2.5 -left-4 text-xs text-cyan-500/40">{(1 - i * 0.25).toFixed(2)}</span>
+                      </div>
+                    ))}
+                  </div>
+                  
+                  <div class="absolute bottom-0 left-0 right-0 top-8 grid grid-cols-5 gap-3">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <div class="flex flex-col items-center">
+                        <div class="relative h-full w-full">
+                          <div 
+                            class="chart-bar absolute bottom-0 w-4/5 mx-auto left-0 right-0 rounded-t-md bg-gradient-to-t from-cyan-500 to-cyan-400 shadow-lg shadow-cyan-500/20" 
+                            style={`height: ${30 + i * 14}%`}
+                          ></div>
+                          <div 
+                            class="chart-bar absolute bottom-0 w-4/5 mx-auto left-0 right-0 rounded-t-md bg-gradient-to-t from-cyan-400/30 to-cyan-400/10 shadow-lg shadow-cyan-500/10" 
+                            style={`height: ${20 + i * 10}%`}
+                          ></div>
+                        </div>
+                        <span class="mt-2 text-xs text-cyan-400/80 font-medium">Gen {i+1}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Elite Agents Table -->
+          <div class="col-span-full md:col-span-2">
+            <div class="rounded-xl border border-cyan-900/30 bg-slate-900/60 backdrop-blur-md shadow-xl p-6 hover:shadow-cyan-900/5 transition-all duration-300 h-full">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-lg font-medium text-cyan-200">Elite Agents</h3>
+                  <p class="text-xs text-cyan-400/60">Top performing genetic sequences</p>
+                </div>
+                <a href="/agents" class="group flex items-center text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+                  View all
+                  <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div class="mt-4">
+                <div class="overflow-x-auto">
+                  <table class="w-full">
+                    <thead>
+                      <tr class="border-b border-cyan-900/30 text-left">
+                        <th class="pb-3 text-xs font-medium uppercase tracking-wider text-cyan-400/70">Agent</th>
+                        <th class="pb-3 text-xs font-medium uppercase tracking-wider text-cyan-400/70">Generation</th>
+                        <th class="pb-3 text-xs font-medium uppercase tracking-wider text-cyan-400/70">Fitness</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b border-cyan-900/20 hover:bg-cyan-900/10 transition-colors duration-150">
+                        <td class="py-3 pr-4">
+                          <div class="flex items-center">
+                            <div class="mr-2 h-2 w-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></div>
+                            <span class="text-sm text-cyan-200">AgentAlpha v5</span>
+                          </div>
+                        </td>
+                        <td class="py-3 pr-4 text-sm text-cyan-300/70">Gen 5</td>
+                        <td class="py-3 text-sm">
+                          <span class="px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-300 font-medium">0.92</span>
+                        </td>
+                      </tr>
+                      <tr class="border-b border-cyan-900/20 hover:bg-cyan-900/10 transition-colors duration-150">
+                        <td class="py-3 pr-4">
+                          <div class="flex items-center">
+                            <div class="mr-2 h-2 w-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></div>
+                            <span class="text-sm text-cyan-200">AgentBeta v5</span>
+                          </div>
+                        </td>
+                        <td class="py-3 pr-4 text-sm text-cyan-300/70">Gen 5</td>
+                        <td class="py-3 text-sm">
+                          <span class="px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-300 font-medium">0.89</span>
+                        </td>
+                      </tr>
+                      <tr class="hover:bg-cyan-900/10 transition-colors duration-150">
+                        <td class="py-3 pr-4">
+                          <div class="flex items-center">
+                            <div class="mr-2 h-2 w-2 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></div>
+                            <span class="text-sm text-cyan-200">AgentGamma v5</span>
+                          </div>
+                        </td>
+                        <td class="py-3 pr-4 text-sm text-cyan-300/70">Gen 5</td>
+                        <td class="py-3 text-sm">
+                          <span class="px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-300 font-medium">0.86</span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- DNA Chromosome Summary -->
+          <div class="col-span-1">
+            <div class="rounded-xl border border-cyan-900/30 bg-slate-900/60 backdrop-blur-md shadow-xl p-6 hover:shadow-cyan-900/5 transition-all duration-300 h-full">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-lg font-medium text-cyan-200">DNA Structure</h3>
+                  <p class="text-xs text-cyan-400/60">Dominant chromosome expressions</p>
+                </div>
+                <a href="/dna-viewer" class="group flex items-center text-sm text-cyan-400 hover:text-cyan-300 transition-colors duration-300">
+                  Details
+                  <svg class="ml-1 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                </a>
+              </div>
+              <div class="mt-4 space-y-5">
+                <div class="group rounded-lg border border-cyan-900/20 bg-cyan-900/10 p-4 hover:bg-cyan-900/20 transition-all duration-300">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white font-bold">
+                        CG
+                      </div>
+                      <div class="ml-4">
+                        <p class="text-sm font-medium text-cyan-200">Cognitive Genes</p>
+                        <p class="text-xs text-cyan-400/60">Reasoning & problem-solving</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width:78%"></div>
+                  </div>
+                  <div class="mt-1 text-right">
+                    <span class="text-xs font-medium text-cyan-300">0.78</span>
+                  </div>
+                </div>
+                
+                <div class="group rounded-lg border border-cyan-900/20 bg-cyan-900/10 p-4 hover:bg-cyan-900/20 transition-all duration-300">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white font-bold">
+                        MG
+                      </div>
+                      <div class="ml-4">
+                        <p class="text-sm font-medium text-cyan-200">Memory Genes</p>
+                        <p class="text-xs text-cyan-400/60">Retention & recall</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width:75%"></div>
+                  </div>
+                  <div class="mt-1 text-right">
+                    <span class="text-xs font-medium text-cyan-300">0.75</span>
+                  </div>
+                </div>
+                
+                <div class="group rounded-lg border border-cyan-900/20 bg-cyan-900/10 p-4 hover:bg-cyan-900/20 transition-all duration-300">
+                  <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center">
+                      <div class="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 text-white font-bold">
+                        LG
+                      </div>
+                      <div class="ml-4">
+                        <p class="text-sm font-medium text-cyan-200">Learning Genes</p>
+                        <p class="text-xs text-cyan-400/60">Adaptation & improvement</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="h-2 w-full bg-slate-800 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full" style="width:91%"></div>
+                  </div>
+                  <div class="mt-1 text-right">
+                    <span class="text-xs font-medium text-cyan-300">0.91</span>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </main>
+      
+      <!-- Footer - Glass effect -->
+      <footer class="border-t border-cyan-900/20 py-4 bg-slate-900/60 backdrop-blur-md z-10 relative">
+        <div class="w-full max-w-screen-2xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 px-4 sm:px-6">
+          <p class="text-sm text-cyan-400/60">© 2025 Helix Agent. All rights reserved.</p>
+          <div class="flex items-center space-x-6">
+            <a href="/docs" class="text-xs text-cyan-400/70 hover:text-cyan-300 transition-colors duration-300 relative group">
+              Documentation
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="/architecture" class="text-xs text-cyan-400/70 hover:text-cyan-300 transition-colors duration-300 relative group">
+              Architecture
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="/terms" class="text-xs text-cyan-400/70 hover:text-cyan-300 transition-colors duration-300 relative group">
+              Terms of Service
+              <span class="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 group-hover:w-full transition-all duration-300"></span>
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   </body>
 </html> 
