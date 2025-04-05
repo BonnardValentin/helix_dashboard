@@ -1,10 +1,6 @@
 ---
 import '../styles/global.css';
-// Component Imports
-import Button from '../components/Button.astro';
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/basics/astro-components/
+import { LoginForm } from "@/components/auth/LoginForm";
 ---
 
 <html lang="en">
@@ -13,13 +9,48 @@ import Button from '../components/Button.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro + TailwindCSS</title>
+		<title>Login | Helix Dashboard</title>
 	</head>
 
-	<body>
-		<div class="grid place-items-center h-screen content-center">
-			<Button>Tailwind Button in Astro!</Button>
-			<a href="/markdown-page" class="p-4 underline">Markdown is also supported...</a>
+	<body class="bg-white">
+		<div class="min-h-screen flex flex-col md:flex-row">
+			<!-- Left side with image and testimonial -->
+			<div class="relative hidden md:flex flex-col flex-1 text-white">
+				<div class="p-6 z-10">
+					<h2 class="text-3xl font-bold text-blue-300">Helix</h2>
+				</div>
+				
+				<div class="flex-1 flex flex-col justify-between p-6 z-10">
+					<div></div> <!-- Spacer -->
+					
+					<!-- Testimonial at the bottom -->
+					<div class="max-w-md bg-black/40 p-4 rounded-lg backdrop-blur-sm">
+						<blockquote class="text-lg font-medium text-blue-200">
+							"This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before. Highly recommended!"
+						</blockquote>
+						<p class="mt-4 text-blue-300 font-semibold">Sofia Davis</p>
+					</div>
+				</div>
+				
+				<!-- Background image with overlay -->
+				<div class="absolute inset-0 z-0">
+					<div 
+						class="w-full h-full bg-cover bg-center"
+						style="background-image: url('/images/blue-model.webp?v=1'); filter: brightness(0.9);"
+					></div>
+				</div>
+			</div>
+			
+			<!-- Right side with login form -->
+			<div class="flex-1 flex flex-col bg-black">
+				<div class="flex justify-end p-6">
+					<a href="/dashboard" class="text-sm font-medium text-blue-400 hover:text-blue-300">Dashboard</a>
+				</div>
+				
+				<div class="flex-1 flex items-center justify-center p-6">
+					<LoginForm client:load />
+				</div>
+			</div>
 		</div>
 	</body>
 </html>

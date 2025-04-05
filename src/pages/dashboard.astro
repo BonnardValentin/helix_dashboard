@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Dashboard | Helix Dashboard</title>
+  </head>
+  <body class="bg-gray-50">
+    <div class="min-h-screen flex flex-col">
+      <!-- Header -->
+      <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+          <h1 class="text-xl font-bold">Helix Dashboard</h1>
+          <a href="/" class="text-sm font-medium">Logout</a>
+        </div>
+      </header>
+      
+      <!-- Main Content -->
+      <main class="flex-1 p-6">
+        <div class="max-w-7xl mx-auto">
+          <div class="bg-white shadow rounded-lg p-6">
+            <h2 class="text-lg font-medium mb-4">Welcome to your Dashboard</h2>
+            <p class="text-gray-500">
+              This is a placeholder dashboard page. After successful login, users would be redirected here.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html> 
