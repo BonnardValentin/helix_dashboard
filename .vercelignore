@@ -1,0 +1,9 @@
+.git
+.github
+.astro
+node_modules
+src
+pnpm-lock.yaml
+README.md
+.env*
+!.env.example 

@@ -1,14 +1,11 @@
 {
-  "version": 2,
+  "buildCommand": "pnpm build",
+  "outputDirectory": "dist",
+  "framework": "astro",
   "cleanUrls": true,
   "trailingSlash": false,
   "github": {
     "silent": true
-  },
-  "build": {
-    "env": {
-      "SHINAI_DASHBOARD_VERSION": "1.0.0"
-    }
   },
   "headers": [
     {
