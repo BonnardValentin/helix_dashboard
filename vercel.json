@@ -12,7 +12,7 @@
   },
   "functions": {
     "*": {
-      "runtime": "nodejs18.x"
+      "runtime": "nodejs18.x@1.0.0"
     }
   },
   "headers": [

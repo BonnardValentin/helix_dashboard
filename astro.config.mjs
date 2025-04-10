@@ -14,6 +14,9 @@ export default defineConfig({
   output: 'server',
   adapter: vercel({
     analytics: true,
-    nodeVersion: 'v18',
+    includeFiles: ['./public/**/*'],
+    functionPerRoute: false,
+    maxDuration: 60,
+    devCommand: 'npm run dev'
   }),
 }); 
