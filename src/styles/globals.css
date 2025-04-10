@@ -1,0 +1,335 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Orbitron:wght@400;500;600;700;800&display=swap');
+@import url('https://rsms.me/inter/inter.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core Color System */
+    --background: 230 35% 4%;
+    --foreground: 214 32% 91%;
+    
+    /* Grid/Lines */
+    --grid-color: rgba(59, 130, 246, 0.1);
+    
+    /* Accent Colors */
+    --primary: 216 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --primary-50: 217 100% 97%;
+    --primary-100: 214 100% 93%;
+    --primary-200: 213 100% 87%;
+    --primary-300: 212 100% 75%;
+    --primary-400: 213 100% 65%;
+    --primary-500: 217 91% 60%;
+    --primary-600: 221 83% 53%;
+    --primary-700: 224 76% 48%;
+    --primary-800: 226 71% 40%;
+    --primary-900: 224 64% 33%;
+    --primary-950: 226 57% 18%;
+    
+    --secondary: 267 100% 68%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 334 90% 70%;
+    --accent-foreground: 0 0% 100%;
+    
+    --highlight: 170 75% 41%;
+    --highlight-foreground: 210 40% 98%;
+    
+    /* Neon Colors for glow effects */
+    --neon-blue: 217 100% 60%;
+    --neon-purple: 267 100% 68%;
+    --neon-pink: 334 90% 70%;
+    --neon-green: 142 71% 45%;
+    --neon-cyan: 180 100% 50%;
+    
+    /* UI/Functional Colors */
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    
+    --card: 222 47% 11%;
+    --card-foreground: 214 32% 91%;
+    
+    --popover: 222 47% 11%;
+    --popover-foreground: 214 32% 91%;
+    
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    
+    --ring: 224 76% 48%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    --success: 142 72% 29%;
+    --success-foreground: 144 100% 97%;
+    
+    --warning: 41 100% 35%;
+    --warning-foreground: 48 100% 96%;
+    
+    /* UI Variables */
+    --radius: 0.5rem;
+    --glow-color: rgba(59, 130, 246, 0.5);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: 230 35% 4%;
+      --foreground: 214 32% 91%;
+    }
+  }
+  
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  /* Core background styling */
+  .bg-grid {
+    --grid-size: 40px;
+    background-image: 
+      linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+    background-size: var(--grid-size) var(--grid-size);
+    opacity: 0.2;
+  }
+  
+  .bg-grid-animate {
+    @apply bg-grid;
+    animation: grid-lines 20s linear infinite;
+  }
+  
+  .bg-glow {
+    position: absolute;
+    width: 80%;
+    height: 40%;
+    top: 0;
+    left: 10%;
+    background: radial-gradient(circle, var(--glow-color, rgba(59, 130, 246, 0.2)) 0%, transparent 70%);
+    filter: blur(80px);
+    pointer-events: none;
+  }
+  
+  /* Stylized scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-muted/20;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary/50 rounded-full;
+    transition: background 0.2s ease;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary/70;
+  }
+  
+  /* Text effects */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)));
+    background-size: 200% auto;
+    animation: text-shimmer 2s linear infinite;
+  }
+  
+  .text-glitch {
+    @apply relative;
+    animation: glitch 3s infinite alternate;
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Glass morphism */
+  .glass {
+    @apply bg-card/30 backdrop-blur-lg border border-white/10;
+  }
+  
+  /* Interactive elements */
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+  
+  .hover-glow:hover {
+    filter: drop-shadow(0 0 8px var(--glow-color));
+    transform: translateY(-2px);
+  }
+}
+
+@layer components {
+  /* Custom buttons with neon effects */
+  .btn-neon {
+    @apply relative px-6 py-2.5 rounded-md text-white font-medium overflow-hidden transition-all duration-300;
+    background: linear-gradient(45deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)));
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  }
+  
+  .btn-neon::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-300;
+    background: linear-gradient(45deg, hsl(var(--neon-purple)), hsl(var(--neon-blue)));
+  }
+  
+  .btn-neon:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+    transform: translateY(-2px);
+  }
+  
+  .btn-neon:hover::before {
+    @apply opacity-100;
+  }
+  
+  .btn-neon-text {
+    @apply relative z-10;
+  }
+  
+  /* Card with glass morphism */
+  .card-glass {
+    @apply glass p-6 rounded-xl relative overflow-hidden;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+  }
+  
+  .card-glass:hover {
+    box-shadow: 0 8px 32px rgba(59, 130, 246, 0.15);
+    transform: translateY(-4px);
+  }
+  
+  /* 3D cards with hover effect */
+  .card-3d {
+    @apply relative rounded-xl overflow-hidden transition-all duration-300 perspective-1000;
+    transform-style: preserve-3d;
+  }
+  
+  .card-3d:hover {
+    transform: rotateX(5deg) rotateY(-5deg) translateZ(10px);
+  }
+  
+  /* Animated glowing border */
+  .border-glow {
+    @apply relative;
+  }
+  
+  .border-glow::before {
+    content: '';
+    @apply absolute -inset-0.5 rounded-lg opacity-50;
+    background: linear-gradient(45deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)), hsl(var(--neon-pink)), hsl(var(--neon-blue)));
+    background-size: 400% 400%;
+    animation: text-shimmer 3s linear infinite;
+    z-index: -1;
+  }
+  
+  /* Neon text with glow effect */
+  .text-neon {
+    @apply relative;
+    color: hsl(var(--neon-blue));
+    text-shadow: 0 0 10px hsla(var(--neon-blue), 0.5);
+  }
+  
+  /* Badge with glow effect */
+  .badge-glow {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+    background: rgba(59, 130, 246, 0.2);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+  }
+  
+  /* Data visualization container */
+  .viz-container {
+    @apply relative rounded-lg overflow-hidden p-5;
+    background: linear-gradient(135deg, rgba(25, 35, 60, 0.8), rgba(15, 23, 42, 0.8));
+    border: 1px solid rgba(59, 130, 246, 0.2);
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+  
+  .backdrop-blur-glass {
+    backdrop-filter: blur(16px);
+  }
+  
+  /* Animated grid lines */
+  .grid-lines-animate {
+    background-size: 50px 50px;
+    animation: grid-lines 20s linear infinite;
+  }
+  
+  /* Clip path utilities */
+  .clip-slant-tr {
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+  }
+  
+  .clip-slant-tl {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 90%);
+  }
+  
+  .clip-slant-br {
+    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
+  }
+  
+  .clip-slant-bl {
+    clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  }
+  
+  /* Glow utilities */
+  .glow-blue {
+    --glow-color: rgba(59, 130, 246, 0.5);
+    filter: drop-shadow(0 0 10px var(--glow-color));
+  }
+  
+  .glow-purple {
+    --glow-color: rgba(139, 92, 246, 0.5);
+    filter: drop-shadow(0 0 10px var(--glow-color));
+  }
+  
+  .glow-pink {
+    --glow-color: rgba(236, 72, 153, 0.5);
+    filter: drop-shadow(0 0 10px var(--glow-color));
+  }
+  
+  .glow-cyan {
+    --glow-color: rgba(34, 211, 238, 0.5);
+    filter: drop-shadow(0 0 10px var(--glow-color));
+  }
+  
+  .glow-green {
+    --glow-color: rgba(16, 185, 129, 0.5);
+    filter: drop-shadow(0 0 10px var(--glow-color));
+  }
+  
+  /* Animation utilities */
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 4s ease-in-out infinite;
+  }
+  
+  /* Text glitch effect */
+  .text-glitch-hover:hover {
+    animation: glitch 0.3s infinite alternate;
+  }
+} 
