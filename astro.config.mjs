@@ -16,7 +16,7 @@ export default defineConfig({
     analytics: true,
     functionPerRoute: false,
     maxDuration: 60,
-    devCommand: 'npm run dev',
+    devCommand: 'pnpm dev',
     includeFiles: ['node_modules/react/**/*', 'node_modules/react-dom/**/*']
   }),
 }); 
