@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
-import vercel from '@astrojs/vercel/serverless';
+import vercel from '@astrojs/vercel/static';
 
 // https://astro.build/config
 export default defineConfig({
@@ -11,12 +11,9 @@ export default defineConfig({
     }),
     react(),
   ],
-  output: 'server',
+  output: 'static',
   adapter: vercel({
     analytics: true,
-    functionPerRoute: false,
-    maxDuration: 60,
-    devCommand: 'pnpm dev',
     includeFiles: ['node_modules/react/**/*', 'node_modules/react-dom/**/*']
   }),
 }); 

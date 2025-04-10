@@ -8,11 +8,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "start": "node ./dist/server/entry.mjs",
+    "start": "astro preview",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro",
-    "vercel-build": "pnpm install && astro build"
+    "astro": "astro"
   },
   "keywords": [
     "ai",
@@ -48,6 +47,10 @@
     "tailwindcss": "^3.4.1",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.162.0"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
   },
   "devDependencies": {
     "@types/node": "^20.11.25",
