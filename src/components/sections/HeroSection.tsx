@@ -73,17 +73,17 @@ export function HeroSection() {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-card/50 backdrop-blur-md border border-white/5 mb-6">
                 <span className="animate-pulse w-2 h-2 rounded-full bg-neon-green"></span>
-                <span className="text-sm font-medium text-neon-green">AI Technology of 2025</span>
+                <span className="text-sm font-medium text-neon-green">Revolutionary DNA-Powered AI</span>
               </div>
               
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold tracking-tight">
-                <span className="block text-white">ShinAI</span>
-                <span className="block text-gradient">Intelligent Agents</span>
-                <span className="block text-white mt-2">Amplifying Potential</span>
+                <span className="block text-white">Evolve Your</span>
+                <span className="block text-gradient">Business Intelligence</span>
+                <span className="block text-white mt-2">Automatically</span>
               </h1>
               
               <p className="mt-6 text-xl text-foreground/80 max-w-xl">
-                Our autonomous AI agents transform how enterprises operate, with seamless integration, unparalleled accuracy, and enterprise-grade security.
+                ShinAI's intelligent agents streamline workflows and boost efficiency. Transform business operations with our revolutionary Digital DNA technology that adapts and evolves to meet your unique needs.
               </p>
             </motion.div>
             
@@ -97,7 +97,7 @@ export function HeroSection() {
                 href="#demo" 
                 className="btn-neon px-8 py-4 rounded-md text-white font-medium inline-flex items-center gap-2"
               >
-                <span className="btn-neon-text">Request Demo</span>
+                <span className="btn-neon-text">Start Free Trial</span>
                 <svg 
                   xmlns="http://www.w3.org/2000/svg" 
                   width="24" 
@@ -119,7 +119,7 @@ export function HeroSection() {
                 href="#features" 
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-md border border-white/10 bg-white/5 backdrop-blur-sm text-white font-medium hover:bg-white/10 transition-all"
               >
-                <span>Explore Features</span>
+                <span>See 300% ROI Case Study</span>
               </a>
             </motion.div>
             
@@ -140,7 +140,7 @@ export function HeroSection() {
                 ))}
               </div>
               <div>
-                <div className="font-medium text-sm">Trusted by 500+ enterprises</div>
+                <div className="font-medium text-sm">Trusted by Fortune 500 companies</div>
                 <div className="flex items-center mt-1">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <svg 
@@ -243,26 +243,6 @@ export function HeroSection() {
                   <div className="text-gradient font-mono mt-1">{Math.floor(Math.random() * 100)}% complete</div>
                 </motion.div>
               ))}
-              
-              {/* Code snippets */}
-              <motion.div 
-                className="absolute bottom-10 right-4 glass p-4 rounded-xl max-w-xs"
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                <div className="font-mono text-xs text-foreground/80 whitespace-pre">
-{`// Initialize AI agent
-const agent = await ShinAI.createAgent({
-  model: "advanced-2025",
-  capabilities: ["reasoning", "execution"],
-  autonomous: true
-});
-
-// Deploy to production
-await agent.deploy();`}
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>

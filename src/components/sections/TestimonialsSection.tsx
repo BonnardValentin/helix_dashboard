@@ -4,21 +4,21 @@ import { motion } from 'framer-motion';
 export function TestimonialsSection() {
   const testimonials = [
     {
-      quote: "The AI agents from ShinAI have transformed our data analytics capabilities, reducing analysis time by 70% while improving accuracy.",
+      quote: "ShinAI's digital DNA evolution system has transformed our agent development approach. After just five generations, our agents are 42% more efficient at complex tasks.",
       author: "Sarah Johnson",
       position: "CTO, TechVision Inc.",
       avatar: "🧑‍💼"
     },
     {
-      quote: "We've seen a 40% increase in productivity since implementing ShinAI agents across our marketing department.",
+      quote: "The Together.ai integration in ShinAI provides reliable and cost-effective inference while the DNA evolution ensures our agents continually improve without manual tuning.",
       author: "Michael Chen",
-      position: "Marketing Director, GrowthSphere",
+      position: "AI Director, GrowthSphere",
       avatar: "👨‍💼"
     },
     {
-      quote: "The enterprise-grade security and seamless integration made ShinAI the obvious choice for our sensitive operations.",
+      quote: "The hexagonal architecture of ShinAI made it remarkably simple to integrate with our existing systems. The clean API design saved us months of development time.",
       author: "Amara Patel",
-      position: "CISO, SecureBank Financial",
+      position: "Lead Engineer, SecureBank Financial",
       avatar: "👩‍💼"
     }
   ];
@@ -32,9 +32,9 @@ export function TestimonialsSection() {
         transition={{ duration: 0.5 }}
       >
         <h2 className="text-sm font-medium text-neon-cyan uppercase tracking-widest mb-3">Testimonials</h2>
-        <h3 className="text-4xl sm:text-5xl font-display font-bold mb-6">What Our Clients Say</h3>
+        <h3 className="text-4xl sm:text-5xl font-display font-bold mb-6">What Our Partners Say</h3>
         <p className="text-xl text-foreground/80">
-          See how our AI agents are making a real-world impact for businesses across industries.
+          See how our digital DNA technology is accelerating AI agent evolution across industries.
         </p>
       </motion.div>
 

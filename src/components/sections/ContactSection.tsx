@@ -11,9 +11,9 @@ export function ContactSection() {
         transition={{ duration: 0.5 }}
       >
         <h2 className="text-sm font-medium text-neon-green uppercase tracking-widest mb-3">Contact Us</h2>
-        <h3 className="text-4xl sm:text-5xl font-display font-bold mb-6">Ready to Transform Your Business?</h3>
+        <h3 className="text-4xl sm:text-5xl font-display font-bold mb-6">Ready to Evolve Your AI?</h3>
         <p className="text-xl text-foreground/80">
-          Get in touch with our team to learn how AI agents can empower your enterprise.
+          Get in touch to learn how our digital DNA evolution platform can create self-improving AI agents for your specific needs.
         </p>
       </motion.div>
 
@@ -27,7 +27,7 @@ export function ContactSection() {
           <div>
             <h4 className="text-2xl font-semibold mb-4">Get in Touch</h4>
             <p className="text-foreground/70 mb-6">
-              Our team is ready to answer your questions and provide more information about our AI solutions.
+              Our team is ready to discuss how ShinAI's evolutionary agents can transform your AI capabilities with minimal oversight.
             </p>
             
             <div className="space-y-4 mb-8">

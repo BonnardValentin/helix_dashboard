@@ -4,21 +4,21 @@ import { motion } from 'framer-motion';
 export function AgentsShowcase() {
   const agents = [
     {
-      name: "Data Analyst",
-      description: "Processes large datasets and generates insights through visualization and statistical analysis.",
-      icon: "📊",
+      name: "Evolution Agent",
+      description: "Manages the genetic evolution process for agent DNA, handling mutation, crossover, and selection to create improved agent generations.",
+      icon: "🧬",
       color: "from-neon-blue to-neon-cyan"
     },
     {
-      name: "Content Creator",
-      description: "Creates engaging content for marketing, blogs, and social media with SEO optimization.",
-      icon: "✏️",
+      name: "Inference Agent",
+      description: "Connects to LLM providers like Together.ai to perform specialized inference with optimized prompting and context management.",
+      icon: "🧠",
       color: "from-neon-purple to-neon-pink"
     },
     {
-      name: "Task Automator",
-      description: "Automates repetitive business processes and workflows to improve efficiency.",
-      icon: "⚙️",
+      name: "Fitness Evaluator",
+      description: "Analyzes agent performance across multiple dimensions, calculating fitness scores to guide the evolutionary process.",
+      icon: "📊",
       color: "from-neon-green to-neon-blue"
     }
   ];
@@ -31,10 +31,10 @@ export function AgentsShowcase() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <h2 className="text-sm font-medium text-neon-purple uppercase tracking-widest mb-3">AI Agents</h2>
-        <h3 className="text-4xl sm:text-5xl font-display font-bold mb-6">Meet Your New Digital Workforce</h3>
+        <h2 className="text-sm font-medium text-neon-purple uppercase tracking-widest mb-3">Digital DNA Agents</h2>
+        <h3 className="text-4xl sm:text-5xl font-display font-bold mb-6">Continuously Evolving Intelligence</h3>
         <p className="text-xl text-foreground/80">
-          Our specialized AI agents are designed to handle specific business functions with superhuman capabilities.
+          Our specialized agents leverage digital DNA technology to evolve and improve with each generation, creating a self-optimizing ecosystem.
         </p>
       </motion.div>
 
