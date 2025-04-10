@@ -1,5 +1,6 @@
 {
   "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
   "outputDirectory": "dist",
   "framework": "astro",
   "cleanUrls": true,
@@ -7,6 +8,7 @@
   "github": {
     "silent": true
   },
+  "nodeVersion": "18.x",
   "headers": [
     {
       "source": "/(.*)",

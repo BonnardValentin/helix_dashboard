@@ -8,7 +8,8 @@
     "start": "node ./dist/server/entry.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "vercel-build": "astro build"
   },
   "keywords": [
     "ai",
