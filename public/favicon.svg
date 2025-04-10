@@ -1,0 +1,44 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    @media (prefers-color-scheme: dark) {
+      #background { fill: url(#paint0_linear_dark); }
+    }
+    @media (prefers-color-scheme: light) {
+      #background { fill: url(#paint0_linear_light); }
+    }
+  </style>
+  
+  <!-- Background gradient -->
+  <rect id="background" width="32" height="32" rx="8" fill="url(#paint0_linear_dark)"/>
+  
+  <!-- DNA helix structure representing Digital DNA -->
+  <path d="M10 8C13 12 19 12 22 8" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M10 14C13 18 19 18 22 14" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  <path d="M10 20C13 24 19 24 22 20" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+  
+  <!-- DNA connecting nodes -->
+  <circle cx="10" cy="8" r="1.5" fill="#4AFCFE"/>
+  <circle cx="22" cy="8" r="1.5" fill="#4AFCFE"/>
+  <circle cx="10" cy="14" r="1.5" fill="#B77BFE"/>
+  <circle cx="22" cy="14" r="1.5" fill="#B77BFE"/>
+  <circle cx="10" cy="20" r="1.5" fill="#4AFCFE"/>
+  <circle cx="22" cy="20" r="1.5" fill="#4AFCFE"/>
+  
+  <!-- Central 'S' letter -->
+  <path d="M15.25 12.5C15.25 11.5 16 10.75 17 10.75C18 10.75 18.75 11.5 18.75 12.5C18.75 13.5 18 14.25 17 14.25L17 17.75C17 18.75 16.25 19.5 15.25 19.5C14.25 19.5 13.5 18.75 13.5 17.75C13.5 16.75 14.25 16 15.25 16" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Gradients -->
+  <defs>
+    <!-- Dark mode gradient -->
+    <linearGradient id="paint0_linear_dark" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#4338CA"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+    
+    <!-- Light mode gradient -->
+    <linearGradient id="paint0_linear_light" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#6366F1"/>
+      <stop offset="1" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg> 

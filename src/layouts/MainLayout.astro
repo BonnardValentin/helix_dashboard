@@ -22,6 +22,21 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://shinai.v
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Update favicon color based on user's color scheme preference
+      const favicon = document.querySelector('link[rel="icon"]');
+      function updateFavicon() {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.querySelector('svg')?.classList?.add('dark-mode');
+        } else {
+          document.querySelector('svg')?.classList?.remove('dark-mode');
+        }
+      }
+      // Update favicon when color scheme changes
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
+      // Initial update
+      document.addEventListener('DOMContentLoaded', updateFavicon);
+    </script>
     <meta name="generator" content={Astro.generator} />
     
     <!-- Primary Meta Tags -->
